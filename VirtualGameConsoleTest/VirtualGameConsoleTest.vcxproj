@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5DC76739-9B61-4926-8994-C010F274CCCA}</ProjectGuid>
+    <RootNamespace>VirtualGameConsoleTest</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\VirtualGameConsole\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\VirtualGameConsole\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="VGCAdjustmentTest.cpp" />
+    <ClCompile Include="VGCAssertTest.cpp" />
+    <ClCompile Include="VGCBootstrapTest.cpp" />
+    <ClCompile Include="VGCBusTest.cpp" />
+    <ClCompile Include="VGCClockTest.cpp" />
+    <ClCompile Include="VGCColorTest.cpp" />
+    <ClCompile Include="VGCDisplayTest.cpp" />
+    <ClCompile Include="VGCErrorTest.cpp" />
+    <ClCompile Include="VGCFontImpTest.cpp" />
+    <ClCompile Include="VGCGDIPlusTest.cpp" />
+    <ClCompile Include="VGCHandlerTest.cpp" />
+    <ClCompile Include="VGCImageImpTest.cpp" />
+    <ClCompile Include="VGCKeyboardTest.cpp" />
+    <ClCompile Include="VGCKeyTest.cpp" />
+    <ClCompile Include="VGCMessageTest.cpp" />
+    <ClCompile Include="VGCRandomizerTest.cpp" />
+    <ClCompile Include="VGCRectangleTest.cpp" />
+    <ClCompile Include="VGCReferencedTest.cpp" />
+    <ClCompile Include="VGCTimerImpTest.cpp" />
+    <ClCompile Include="VGCVectorTest.cpp" />
+    <ClCompile Include="VGCVirtualGameConsoleTest.cpp" />
+    <ClCompile Include="VGCWindowTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VGCAdjustmentTest.h" />
+    <ClInclude Include="VGCAssertTest.h" />
+    <ClInclude Include="VGCBootstrapTest.h" />
+    <ClInclude Include="VGCBusTest.h" />
+    <ClInclude Include="VGCClockTest.h" />
+    <ClInclude Include="VGCColorTest.h" />
+    <ClInclude Include="VGCDisplayTest.h" />
+    <ClInclude Include="VGCErrorTest.h" />
+    <ClInclude Include="VGCFontImpTest.h" />
+    <ClInclude Include="VGCGDIPlusTest.h" />
+    <ClInclude Include="VGCHandlerTest.h" />
+    <ClInclude Include="VGCImageImpTest.h" />
+    <ClInclude Include="VGCKeyboardTest.h" />
+    <ClInclude Include="VGCKeyTest.h" />
+    <ClInclude Include="VGCMessageTest.h" />
+    <ClInclude Include="VGCRandomizerTest.h" />
+    <ClInclude Include="VGCRectangleTest.h" />
+    <ClInclude Include="VGCReferencedTest.h" />
+    <ClInclude Include="VGCTimerImpTest.h" />
+    <ClInclude Include="VGCVectorTest.h" />
+    <ClInclude Include="VGCVirtualGameConsoleTest.h" />
+    <ClInclude Include="VGCWindowTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualGameConsole\VirtualGameConsole.vcxproj">
+      <Project>{dcb8782e-6b03-4092-a93b-efa555c023fd}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
