@@ -27,9 +27,6 @@
     <ClCompile Include="Fishdroids.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Fishgame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h">
@@ -42,9 +39,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fishdroids.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fishgame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

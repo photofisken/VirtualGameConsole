@@ -39,7 +39,7 @@ void Sputnik::update() {
 		}
 	}
 	else if (VGCKeyboard::isPressed(VGCKey::A_KEY)) {
-		x -= speed < MIN_X;
+		x -= speed;
 		if (MIN_X > x) {       //this line might actually be wrong
 			x = MIN_X;
 		}
