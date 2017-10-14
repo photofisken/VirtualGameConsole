@@ -20,12 +20,6 @@ public:
 	virtual void render() = 0;
 	virtual void update() = 0;
 	virtual void finalize() = 0;
-private:
-	void move();
-	void fire(GameObjectVector &gameObjects);
-	bool mIsAlive;
-	VGCTimer mReloadTimer;
-	VGCVector mPosition;
-	VGCVector mDirection;
+
 };
 

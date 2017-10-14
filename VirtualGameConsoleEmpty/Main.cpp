@@ -1,6 +1,5 @@
 #include "VGCVirtualGameConsole.h"
 #include <string>
-#include <string>
 #include <vector>
 #include "Sputnik.h"
 
@@ -42,6 +41,7 @@ int VGCMain(const VGCStringVector &arguments) {
 	return 0;
 }
 
+//My old hello world below
 /*
 int VGCMain(const VGCStringVector &arguments){
 	const string applicationName = "Hello World!!";

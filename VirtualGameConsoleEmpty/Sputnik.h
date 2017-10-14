@@ -7,10 +7,10 @@ class Sputnik : public GameObject
 public:
 	Sputnik();
 	~Sputnik();
-	void initialize() override;
-	void render() override;
-	void update() override;
-	void finalize() override;
+	static void initialize();
+	virtual void render();
+	virtual void update();
+	static void finalize();
 private: 
 	VGCVector mPosition;
 	VGCImage image;

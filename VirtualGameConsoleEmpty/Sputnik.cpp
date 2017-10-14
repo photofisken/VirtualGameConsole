@@ -7,9 +7,11 @@ static const int width = 40;
 VGCImage image;
 static const std::string textureName = "sputnik.png";
 
+//where the sputnik will spawn
 Sputnik::Sputnik() :
   mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() / 1.1) {
 }
+
 
 
 Sputnik::~Sputnik()
@@ -26,6 +28,7 @@ void Sputnik::render() {
 	VGCDisplay::renderImage(image, index, mPosition, adjustment);
 }
 
+//the stuff that will happen constantly: the sputnik will move if key is pressed
 void Sputnik::update() {
 	const int MIN_X = width / 2;
 	const int MAX_X = VGCDisplay::getWidth() - width / 2;
