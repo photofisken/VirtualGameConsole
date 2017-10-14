@@ -28,7 +28,7 @@ Asteroid::~Asteroid(){
 }
 
 void Asteroid::update(){
-	const int MIN_X = -WIDTH / 2;
+	const int MIN_X = -WIDTH / 10;
 	int x = mPosition.getX();
 	x -= SPEED;
 	if(x < MIN_X){

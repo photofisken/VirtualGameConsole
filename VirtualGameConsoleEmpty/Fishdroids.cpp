@@ -1,6 +1,10 @@
 #include "Fishdroids.h"
+using namespace std;
 
-
+static const int DAMAGE = 5;
+static const int RADIUS = 10;
+static const int SCORE = 100;
+static const double RELOAD_TIME = 0.7;
 static const int SPEED = 5;
 static const int HEIGHT = 40;
 static const int WIDTH = 40;
@@ -19,7 +23,12 @@ static VGCVector getRandomPosition() {
 }
 
 
-Fishdroids::Fishdroids()
+Fishdroids::Fishdroids(const VGCVector &position, const VGCVector &direction) :
+GameObject(),
+mIsAlive(true),
+mReloadTimer(VGCClock::openTimer(RELOAD_TIME)),
+mPosition(position),
+mDirection(direction)
 {
 }
 
@@ -28,11 +37,18 @@ Fishdroids::~Fishdroids()
 {
 }
 
+bool Fishdroids::isAlive() {
+	return mIsAlive;
+}
+Fishdroids::Category Fishdroids::getCategory() {
+	return ENEMY;
+}
 void Fishdroids::initialize() {
 	image = VGCDisplay::openImage(textureName, 1, 1);
 }
 
-void Fishdroids::update() {
+
+void Fishdroids::tick() {
 	const int MIN_X = -WIDTH / 2;
 	int x = mPosition.getX();
 	x -= SPEED;
@@ -44,6 +60,12 @@ void Fishdroids::update() {
 	}
 }
 
+int Fishdroids::getRadius() {
+	return RADIUS;
+}
+int Fishdroids::getDamage() {
+	return DAMAGE;
+}
 void Fishdroids::render() {
 	VGCVector index(0, 0);
 	VGCAdjustment adjustment(0.5, 0.5);

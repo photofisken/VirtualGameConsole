@@ -1,7 +1,7 @@
 #include "Sputnik.h"
 #include <string>
 
-static const int speed = 2;
+static const int speed = 7;
 static const int height = 40;
 static const int width = 40;
 VGCImage image;
@@ -31,16 +31,16 @@ void Sputnik::update() {
 	const int MAX_X = VGCDisplay::getWidth() - width / 2;
 	const int MAX_Y = VGCDisplay::getHeight() - height / 2;
 	int x = mPosition.getX();
-	if (VGCKeyboard::isPressed(VGCKey::D_KEY)) {
+	if (VGCKeyboard::isPressed(VGCKey::ARROW_RIGHT_KEY)) {
 		x += speed;
 		//Can't breach the screennnn :o
 		if (MAX_X < x) {
 			x = MAX_X;
 		}
 	}
-	else if (VGCKeyboard::isPressed(VGCKey::A_KEY)) {
+	else if (VGCKeyboard::isPressed(VGCKey::ARROW_LEFT_KEY)) {
 		x -= speed;
-		if (MIN_X > x) {       //this line might actually be wrong
+		if (MIN_X > x) {       
 			x = MIN_X;
 		}
 	}
