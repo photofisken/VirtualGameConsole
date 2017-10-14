@@ -3,8 +3,9 @@
 #include <vector>
 #include "Sputnik.h"
 
-// Below is the window and window size
+
 int VGCMain(const VGCStringVector &arguments) {
+	// Below is the window and window size
 	const std::string applicationName = "Sputnik: the game";
 	const int DISPLAY_WIDTH = 800;
 	const int DISPLAY_HEIGHT = 557;
@@ -28,7 +29,7 @@ int VGCMain(const VGCStringVector &arguments) {
 			VGCDisplay::endFrame();
 		}
 
-		sputnik->update();
+		sputnik->tick();
 
 		VGCVirtualGameConsole::endLoop();
 	}

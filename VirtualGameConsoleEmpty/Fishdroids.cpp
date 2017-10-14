@@ -37,6 +37,7 @@ Fishdroids::~Fishdroids()
 {
 }
 
+//love them return values
 bool Fishdroids::isAlive() {
 	return mIsAlive;
 }
@@ -44,12 +45,23 @@ bool Fishdroids::isAlive() {
 Fishdroids::Category Fishdroids::getCategory() {
 	return ENEMY;
 }
+
+
+int Fishdroids::getRadius() {
+	return RADIUS;
+}
+
+int Fishdroids::getDamage() {
+	return DAMAGE;
+}
+
+VGCVector Fishdroids::getPosition() { 
+	return mPosition; 
+}
+
 void Fishdroids::initialize() {
 	image = VGCDisplay::openImage(textureName, 1, 1);
 }
-
-VGCVector Fishdroids::getPosition() { return mPosition; }
-
 void Fishdroids::tick(GameObject *e, GameObjectVector &gameObjects) {
 	const int MIN_X = -WIDTH / 2;
 	int x = mPosition.getX();
@@ -62,12 +74,15 @@ void Fishdroids::tick(GameObject *e, GameObjectVector &gameObjects) {
 	}
 }
 
-int Fishdroids::getRadius() {
-	return RADIUS;
-}
-
-int Fishdroids::getDamage() {
-	return DAMAGE;
+int Fishdroids::collide(GameObject *gameObject, GameObjectVector &gameObjects) {
+	if (0 < gameObject->getDamage()) {
+		mIsAlive = false;
+		//entities.push_back(new Explosion(mPosition));
+		return SCORE;
+	}
+	else {
+		return 0;
+	}
 }
 
 void Fishdroids::render() {

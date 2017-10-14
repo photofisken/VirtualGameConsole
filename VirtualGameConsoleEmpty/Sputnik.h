@@ -7,16 +7,16 @@ class Sputnik : public GameObject
 public:
 	Sputnik();
 	~Sputnik();
-	static void initialize();
-	virtual bool isAlive();
-	virtual Category getCategory();
-	virtual VGCVector getPosition();
-	virtual int getRadius();
-	virtual int getDamage();
-	virtual void tick(GameObjectVector &gameObjects);
-	virtual int collide(GameObject *e, GameObjectVector &gameObjects);
-	static void render();
-	static void finalize();
+	 void initialize();
+	 bool isAlive();
+	 Category getCategory();
+	 VGCVector getPosition();
+	 int getRadius();
+	 int getDamage();
+	 void tick(GameObjectVector &gameObjects);
+	 int collide(GameObject *e, GameObjectVector &gameObjects);
+	 void render() override;
+	 void finalize();
 
 private: 
 	VGCVector mPosition;

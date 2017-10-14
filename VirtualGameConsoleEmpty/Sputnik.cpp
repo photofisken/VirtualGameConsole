@@ -15,6 +15,7 @@ Sputnik::Sputnik() :
   mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() / 1.1) {
 }
 
+// A bunch of return values
 bool Sputnik::isAlive() { 
 	return mIsAlive; };
 

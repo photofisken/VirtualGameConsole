@@ -5,7 +5,7 @@ class GameObject
 {
 public:
 	enum Category {FRIEND, ENEMY};
-	enum Layer {BACKGROUND, FOREGROUND};
+	enum Layer {BACKGROUND, FOREGROUND}; //I guess I don't have this atm
 	typedef std::vector<GameObject*> GameObjectVector; //wat is dis
 	GameObject();
 	virtual ~GameObject();
