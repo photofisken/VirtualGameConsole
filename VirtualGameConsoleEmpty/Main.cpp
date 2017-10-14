@@ -29,7 +29,7 @@ int VGCMain(const VGCStringVector &arguments) {
 			VGCDisplay::endFrame();
 		}
 
-		sputnik->tick();
+		sputnik->tick();  
 
 		VGCVirtualGameConsole::endLoop();
 	}

@@ -62,7 +62,7 @@ VGCVector Fishdroids::getPosition() {
 void Fishdroids::initialize() {
 	image = VGCDisplay::openImage(textureName, 1, 1);
 }
-void Fishdroids::tick(GameObject *e, GameObjectVector &gameObjects) {
+void Fishdroids::tick() {
 	const int MIN_X = -WIDTH / 2;
 	int x = mPosition.getX();
 	x -= SPEED;
@@ -73,7 +73,8 @@ void Fishdroids::tick(GameObject *e, GameObjectVector &gameObjects) {
 		mPosition.setX(x);
 	}
 }
-
+//collide
+/*
 int Fishdroids::collide(GameObject *gameObject, GameObjectVector &gameObjects) {
 	if (0 < gameObject->getDamage()) {
 		mIsAlive = false;
@@ -84,7 +85,7 @@ int Fishdroids::collide(GameObject *gameObject, GameObjectVector &gameObjects) {
 		return 0;
 	}
 }
-
+*/ 
 void Fishdroids::render() {
 	VGCVector index(0, 0);
 	VGCAdjustment adjustment(0.5, 0.5);

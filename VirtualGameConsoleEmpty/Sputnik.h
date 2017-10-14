@@ -13,8 +13,7 @@ public:
 	 VGCVector getPosition();
 	 int getRadius();
 	 int getDamage();
-	 void tick(GameObjectVector &gameObjects);
-	 int collide(GameObject *e, GameObjectVector &gameObjects);
+	 void tick() override;
 	 void render() override;
 	 void finalize();
 

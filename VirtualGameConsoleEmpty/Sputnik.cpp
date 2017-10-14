@@ -51,7 +51,7 @@ void Sputnik::render() {
 }
 
 //the stuff that will happen constantly: the sputnik will move if key is pressed
-void Sputnik::tick(GameObjectVector &gameObjects) {
+void Sputnik::tick() {
 	const int MIN_X = width / 2;
 	const int MAX_X = VGCDisplay::getWidth() - width / 2;
 	const int MAX_Y = VGCDisplay::getHeight() - height / 2;

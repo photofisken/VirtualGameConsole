@@ -14,8 +14,7 @@ public:
 	virtual VGCVector getPosition() = 0;
 	virtual int getRadius() = 0;
 	virtual int getDamage() = 0;
-	virtual void tick(GameObjectVector &gameObjects) = 0;
-	virtual int collide(GameObject *gameObject, GameObjectVector &gameObjects) = 0;
+	virtual void tick() = 0;
 	virtual void render() = 0;
 
 };
