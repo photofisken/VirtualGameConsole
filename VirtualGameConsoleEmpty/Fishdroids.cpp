@@ -40,6 +40,7 @@ Fishdroids::~Fishdroids()
 bool Fishdroids::isAlive() {
 	return mIsAlive;
 }
+
 Fishdroids::Category Fishdroids::getCategory() {
 	return ENEMY;
 }
@@ -47,8 +48,9 @@ void Fishdroids::initialize() {
 	image = VGCDisplay::openImage(textureName, 1, 1);
 }
 
+VGCVector Fishdroids::getPosition() { return mPosition; }
 
-void Fishdroids::tick() {
+void Fishdroids::tick(GameObject *e, GameObjectVector &gameObjects) {
 	const int MIN_X = -WIDTH / 2;
 	int x = mPosition.getX();
 	x -= SPEED;
@@ -63,9 +65,11 @@ void Fishdroids::tick() {
 int Fishdroids::getRadius() {
 	return RADIUS;
 }
+
 int Fishdroids::getDamage() {
 	return DAMAGE;
 }
+
 void Fishdroids::render() {
 	VGCVector index(0, 0);
 	VGCAdjustment adjustment(0.5, 0.5);

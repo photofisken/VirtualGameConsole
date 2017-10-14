@@ -111,6 +111,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entity2.cpp" />
+    <ClCompile Include="Invader.cpp" />
+    <ClCompile Include="Invaders.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Entity2.h" />
+    <ClInclude Include="Invader.h" />
+    <ClInclude Include="Invaders.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

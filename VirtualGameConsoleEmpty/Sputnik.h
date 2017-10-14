@@ -8,11 +8,18 @@ public:
 	Sputnik();
 	~Sputnik();
 	static void initialize();
-	virtual void render();
-	virtual void update();
+	virtual bool isAlive();
+	virtual Category getCategory();
+	virtual VGCVector getPosition();
+	virtual int getRadius();
+	virtual int getDamage();
+	virtual void tick(GameObjectVector &gameObjects);
+	virtual int collide(GameObject *e, GameObjectVector &gameObjects);
+	static void render();
 	static void finalize();
+
 private: 
 	VGCVector mPosition;
-	VGCImage image;
+	bool mIsAlive;
 };
 

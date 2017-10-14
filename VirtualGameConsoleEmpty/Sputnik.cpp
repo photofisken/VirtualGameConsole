@@ -1,6 +1,9 @@
 #include "Sputnik.h"
 #include <string>
+using namespace std;
 
+static const int DAMAGE = 1;
+static const int RADIUS = 4;
 static const int speed = 7;
 static const int height = 40;
 static const int width = 40;
@@ -12,11 +15,29 @@ Sputnik::Sputnik() :
   mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() / 1.1) {
 }
 
+bool Sputnik::isAlive() { 
+	return mIsAlive; };
 
+int Sputnik::getRadius() {
+	return RADIUS;
+}
+
+int Sputnik::getDamage() {
+	return DAMAGE;
+}
+
+
+Sputnik::Category Sputnik::getCategory() { return FRIEND; }
+VGCVector Sputnik::getPosition()
+{
+	return VGCVector();
+}
+;
 
 Sputnik::~Sputnik()
 {
 }
+
 
 void Sputnik::initialize() {
 	image = VGCDisplay::openImage(textureName, 1, 1);
@@ -29,7 +50,7 @@ void Sputnik::render() {
 }
 
 //the stuff that will happen constantly: the sputnik will move if key is pressed
-void Sputnik::update() {
+void Sputnik::tick(GameObjectVector &gameObjects) {
 	const int MIN_X = width / 2;
 	const int MAX_X = VGCDisplay::getWidth() - width / 2;
 	const int MAX_Y = VGCDisplay::getHeight() - height / 2;

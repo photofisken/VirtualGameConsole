@@ -16,10 +16,7 @@ public:
 	virtual int getDamage() = 0;
 	virtual void tick(GameObjectVector &gameObjects) = 0;
 	virtual int collide(GameObject *gameObject, GameObjectVector &gameObjects) = 0;
-	virtual void initialize(Layer layer) = 0;
 	virtual void render() = 0;
-	virtual void update() = 0;
-	virtual void finalize() = 0;
 
 };
 

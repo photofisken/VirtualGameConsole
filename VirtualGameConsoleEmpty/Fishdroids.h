@@ -7,7 +7,7 @@ public:
 	Fishdroids(const VGCVector &position, const VGCVector &direction);
 	 ~Fishdroids(); 
 	 virtual void tick() = 0;    //I tried adding this
-	 virtual bool IsAlive();      //virtual doesn't wanna work with Fishdroids.cpp?
+	 virtual bool isAlive();      // doesn't wanna work with Fishdroids.cpp?
 	 virtual Category getCategory();
 	 virtual VGCVector getPosition();
 	 virtual int getRadius();
