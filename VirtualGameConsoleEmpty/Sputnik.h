@@ -16,5 +16,6 @@ public:
 private: 
 	VGCVector mPosition;
 	VGCTimer mReload;
+
 };
 

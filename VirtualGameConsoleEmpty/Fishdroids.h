@@ -13,7 +13,7 @@ public:
 private:
 	void move();
 	void fire();
-	VGCTimer mReloadTimer;
+	VGCTimer mReload;
 	VGCVector mPosition;
 	VGCVector mDirection;
 	VGCImage mImage;

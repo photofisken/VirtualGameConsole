@@ -8,7 +8,7 @@ static const int RADIUS = 4;
 static const int speed = 7;
 static const int height = 40;
 static const int width = 40;
-static const double RELOAD = 1;
+static const double RELOAD = 0.5;
 VGCImage image;
 static const std::string textureName = "sputnik.png";
 Bullet* bullet;
@@ -18,7 +18,6 @@ Sputnik::Sputnik(GameObjectsVector* gameObjects)
 	: GameObject(gameObjects)
 	, mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() - 50),
 	mReload(VGCClock::openTimer(RELOAD))
-
 {
 }
 
