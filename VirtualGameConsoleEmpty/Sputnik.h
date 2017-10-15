@@ -15,5 +15,6 @@ public:
 	 void shoot();
 private: 
 	VGCVector mPosition;
+	VGCTimer mReload;
 };
 

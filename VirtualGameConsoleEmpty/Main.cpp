@@ -10,6 +10,7 @@ int VGCMain(const VGCStringVector &arguments) {
 	const std::string applicationName = "Sputnik: the game";
 	const int DISPLAY_WIDTH = 800;
 	const int DISPLAY_HEIGHT = 557;
+	static const double FRAMES_PER_SECOND = 120;
 	VGCVirtualGameConsole::initialize(applicationName, DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
 	GameObjectsVector GOVector;
@@ -21,13 +22,15 @@ int VGCMain(const VGCStringVector &arguments) {
 		GOVector[i]->initialize();
 	}
 
+	VGCTimer timer = VGCClock::openTimer(1.0 / FRAMES_PER_SECOND);
 	// Update (gameloop) (every frame)
 	while (VGCVirtualGameConsole::beginLoop()) {
 
+		VGCClock::reset(timer);
 		// Draw
 		if (VGCDisplay::beginFrame()) {
 
-			const VGCColor backgroundColor = VGCColor(255, 0, 0, 0);
+			const VGCColor backgroundColor = VGCColor(255, 0, 0, 0); //window colour
 			VGCDisplay::clear(backgroundColor);
 
 			for (unsigned int i = 0; i < GOVector.size(); i++)
@@ -44,8 +47,8 @@ int VGCMain(const VGCStringVector &arguments) {
 				delete GOVector[i];               //delete object
 				GOVector.erase(GOVector.begin() + i);   //delete spot in vector
 			}
-			else {                         //if it's alive, run the "update"
-				GOVector[i]->tick();
+			else {                        
+				GOVector[i]->tick();          //if it's alive, run the "update"
 			}
 		}
 

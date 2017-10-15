@@ -8,6 +8,7 @@ static const int RADIUS = 4;
 static const int speed = 7;
 static const int height = 40;
 static const int width = 40;
+static const double RELOAD = 1;
 VGCImage image;
 static const std::string textureName = "sputnik.png";
 Bullet* bullet;
@@ -15,7 +16,8 @@ Bullet* bullet;
 //where the sputnik will spawn
 Sputnik::Sputnik(GameObjectsVector* gameObjects)
 	: GameObject(gameObjects)
-	, mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() - 50)
+	, mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() - 50),
+	mReload(VGCClock::openTimer(RELOAD))
 
 {
 }
@@ -73,11 +75,19 @@ void Sputnik::move() {
 void Sputnik::shoot()
 {
 	// Spawn bullet when space is pressed
-	if (VGCKeyboard::isPressed(VGCKey::SPACE_KEY))
+	if (VGCKeyboard::isPressed(VGCKey::SPACE_KEY)&& VGCClock::isExpired(mReload))
 	{
 		// Create a bullet at the ship coordinates
-		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY());
+		VGCVector directionUp(0, -1);
+		VGCVector directionRight(1, -1);
+		VGCVector directionLeft(-1, -1);
+		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionUp);
+		mGameObjects->push_back(bullet);
+		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionRight);
+		mGameObjects->push_back(bullet);
+		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionLeft);
 		// Add bullet to GameObject vector
 		mGameObjects->push_back(bullet);
+		VGCClock::reset(mReload);
 	}
 }

@@ -6,11 +6,12 @@
 static const int SPEED = 6;
 static const std::string textureName = "bullet.png";
 
-//follow player/sputnik
-Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY)
+
+Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction)
 	: GameObject(gameObjects)
 {
 	mPosition = VGCVector(playerX, playerY);
+	mDirection = direction;
 	mImage = VGCDisplay::openImage(textureName, 1, 1);
 }
 
@@ -38,9 +39,13 @@ void Bullet::tick()
 
 void Bullet::move()
 {
+	mPosition += SPEED* mDirection;
+	int x = mPosition.getX();
 	int y = mPosition.getY();
-	y -= SPEED;
 	mPosition.setY(y);
+	mPosition.setX(x);
+
+	
 
 	// Delete if offscreen
 	if (y < 0)
