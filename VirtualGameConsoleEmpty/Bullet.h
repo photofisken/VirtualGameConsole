@@ -9,12 +9,9 @@ public:
 	~Bullet();
 
 	void initialize() override;
-
 	void render() override;
 	void tick() override;
-
 	void finalize() override;
-
 	void move();
 private:
 	VGCImage mImage;

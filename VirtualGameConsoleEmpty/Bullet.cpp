@@ -6,6 +6,7 @@
 static const int SPEED = 6;
 static const std::string textureName = "bullet.png";
 
+//follow player/sputnik
 Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY)
 	: GameObject(gameObjects)
 {
@@ -15,6 +16,7 @@ Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY)
 
 Bullet::~Bullet()
 {
+	//finalize to close picture
 	finalize();
 }
 

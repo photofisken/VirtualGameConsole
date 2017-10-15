@@ -19,7 +19,7 @@ public:
 	virtual void render() = 0;
 	virtual void finalize() = 0;
 	bool isAlive;
-protected:
+protected:         //Middleground for public and private: everything connected to GO gets it
 	GameObjectsVector* mGameObjects;
 	VGCVector mPosition;
 	Category mCategory;

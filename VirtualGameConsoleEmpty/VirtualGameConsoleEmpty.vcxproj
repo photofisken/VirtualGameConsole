@@ -108,6 +108,7 @@
     <ResourceCompile Include="VirtualGameConsoleEmpty.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="bullet.png" />
     <Image Include="fishdroids.png" />
     <Image Include="sputnik.png" />
   </ItemGroup>

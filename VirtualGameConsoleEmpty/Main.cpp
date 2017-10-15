@@ -40,11 +40,11 @@ int VGCMain(const VGCStringVector &arguments) {
 
 		for (unsigned int i = 0; i < GOVector.size(); i++)
 		{
-			if (GOVector[i]->isAlive == false) {
-				delete GOVector[i];
-				GOVector.erase(GOVector.begin() + i);
+			if (GOVector[i]->isAlive == false) {   //if it's dead, delete the place in the vector
+				delete GOVector[i];               //delete object
+				GOVector.erase(GOVector.begin() + i);   //delete spot in vector
 			}
-			else {
+			else {                         //if it's alive, run the "update"
 				GOVector[i]->tick();
 			}
 		}

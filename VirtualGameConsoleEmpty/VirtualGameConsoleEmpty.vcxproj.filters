@@ -63,5 +63,8 @@
     <Image Include="fishdroids.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
