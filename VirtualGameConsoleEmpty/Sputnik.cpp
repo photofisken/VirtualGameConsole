@@ -12,7 +12,7 @@ static const std::string textureName = "sputnik.png";
 
 //where the sputnik will spawn
 Sputnik::Sputnik() :
-  mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() / 1.1) {
+  mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() - 50) {
 }
 
 // A bunch of return values

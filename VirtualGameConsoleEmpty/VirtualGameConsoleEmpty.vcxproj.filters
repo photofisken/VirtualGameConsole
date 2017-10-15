@@ -41,6 +41,9 @@
     <ClInclude Include="Fishdroids.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="VirtualGameConsoleEmpty.rc">

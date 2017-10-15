@@ -9,6 +9,7 @@ public:
 	typedef std::vector<GameObject*> GameObjectVector; //wat is dis
 	GameObject();
 	virtual ~GameObject();
+	virtual void initialize() = 0;
 	virtual bool isAlive() = 0;
 	virtual Category getCategory() = 0;
 	virtual VGCVector getPosition() = 0;
@@ -16,6 +17,7 @@ public:
 	virtual int getDamage() = 0;
 	virtual void tick() = 0;
 	virtual void render() = 0;
+	virtual void finalize() = 0;
 
 };
 

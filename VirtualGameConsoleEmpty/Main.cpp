@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Sputnik.h"
+#include "Types.h"
 
 
 int VGCMain(const VGCStringVector &arguments) {
@@ -11,9 +12,14 @@ int VGCMain(const VGCStringVector &arguments) {
 	const int DISPLAY_HEIGHT = 557;
 	VGCVirtualGameConsole::initialize(applicationName, DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
+	GameObjectsVector GOVector;
+
 	//create an object out of the Sputnik (class)
-	Sputnik* sputnik = new Sputnik();
-	sputnik->initialize();
+	GOVector.push_back(new Sputnik());
+	for (unsigned int i = 0; i < GOVector.size(); i++)
+	{
+		GOVector[i]->initialize();
+	}
 
 	// Update (gameloop) (every frame)
 	while (VGCVirtualGameConsole::beginLoop()) {
@@ -24,18 +30,27 @@ int VGCMain(const VGCStringVector &arguments) {
 			const VGCColor backgroundColor = VGCColor(255, 0, 0, 0);
 			VGCDisplay::clear(backgroundColor);
 
-			sputnik->render();
+			for (unsigned int i = 0; i < GOVector.size(); i++)
+			{
+				GOVector[i]->render();
+			}
 
 			VGCDisplay::endFrame();
 		}
 
-		sputnik->tick();  
+		for (unsigned int i = 0; i < GOVector.size(); i++)
+		{
+			GOVector[i]->tick();
+		}
 
 		VGCVirtualGameConsole::endLoop();
 	}
 
 	// Stop the program
-	sputnik->finalize();
+	for (unsigned int i = 0; i < GOVector.size(); i++)
+	{
+		GOVector[i]->finalize();
+	}
 
 	VGCVirtualGameConsole::finalize();
 
