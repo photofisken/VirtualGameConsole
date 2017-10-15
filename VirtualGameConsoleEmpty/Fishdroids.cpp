@@ -23,40 +23,17 @@ static VGCVector getRandomPosition() {
 }
 
 
-Fishdroids::Fishdroids(const VGCVector &position, const VGCVector &direction) :
-GameObject(),
-mIsAlive(true),
-mReloadTimer(VGCClock::openTimer(RELOAD_TIME)),
-mPosition(position),
-mDirection(direction)
+Fishdroids::Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position, const VGCVector &direction) :
+	GameObject(gameObjects),
+	mReloadTimer(VGCClock::openTimer(RELOAD_TIME)),
+	mPosition(position),
+	mDirection(direction)
 {
 }
 
 
 Fishdroids::~Fishdroids()
 {
-}
-
-//love them return values
-bool Fishdroids::isAlive() {
-	return mIsAlive;
-}
-
-Fishdroids::Category Fishdroids::getCategory() {
-	return ENEMY;
-}
-
-
-int Fishdroids::getRadius() {
-	return RADIUS;
-}
-
-int Fishdroids::getDamage() {
-	return DAMAGE;
-}
-
-VGCVector Fishdroids::getPosition() { 
-	return mPosition; 
 }
 
 void Fishdroids::initialize() {
@@ -76,16 +53,16 @@ void Fishdroids::tick() {
 //collide
 /*
 int Fishdroids::collide(GameObject *gameObject, GameObjectVector &gameObjects) {
-	if (0 < gameObject->getDamage()) {
-		mIsAlive = false;
-		//entities.push_back(new Explosion(mPosition));
-		return SCORE;
-	}
-	else {
-		return 0;
-	}
+if (0 < gameObject->getDamage()) {
+mIsAlive = false;
+//entities.push_back(new Explosion(mPosition));
+return SCORE;
 }
-*/ 
+else {
+return 0;
+}
+}
+*/
 void Fishdroids::render() {
 	VGCVector index(0, 0);
 	VGCAdjustment adjustment(0.5, 0.5);

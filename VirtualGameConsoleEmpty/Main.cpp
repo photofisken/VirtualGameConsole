@@ -15,7 +15,7 @@ int VGCMain(const VGCStringVector &arguments) {
 	GameObjectsVector GOVector;
 
 	//create an object out of the Sputnik (class)
-	GOVector.push_back(new Sputnik());
+	GOVector.push_back(new Sputnik(&GOVector));
 	for (unsigned int i = 0; i < GOVector.size(); i++)
 	{
 		GOVector[i]->initialize();
@@ -40,7 +40,13 @@ int VGCMain(const VGCStringVector &arguments) {
 
 		for (unsigned int i = 0; i < GOVector.size(); i++)
 		{
-			GOVector[i]->tick();
+			if (GOVector[i]->isAlive == false) {
+				delete GOVector[i];
+				GOVector.erase(GOVector.begin() + i);
+			}
+			else {
+				GOVector[i]->tick();
+			}
 		}
 
 		VGCVirtualGameConsole::endLoop();

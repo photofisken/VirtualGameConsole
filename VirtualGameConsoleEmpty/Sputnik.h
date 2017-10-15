@@ -5,20 +5,15 @@
 class Sputnik : public GameObject
 {
 public:
-	Sputnik();
+	Sputnik(GameObjectsVector* gameObjects);
 	~Sputnik();
 	 void initialize() override;   
-	 bool isAlive();
-	 Category getCategory();
-	 VGCVector getPosition();
-	 int getRadius();
-	 int getDamage();
 	 void tick() override;     
 	 void render() override;   
 	 void finalize() override;
-
+	 void move();
+	 void shoot();
 private: 
 	VGCVector mPosition;
-	bool mIsAlive;
 };
 
