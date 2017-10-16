@@ -13,6 +13,7 @@ public:
 	 void finalize();
 	 VGCVector getPosition();
 	 void damage(int damage);
+	 int getScore() override;
 private:
 	void move();
 	void shoot();

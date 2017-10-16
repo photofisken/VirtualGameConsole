@@ -4,6 +4,7 @@
 GameObject::GameObject(GameObjectsVector* gameObjects):
 	mGameObjects(gameObjects)
 	, isAlive(true)
+	, isEnemy(false)
 {
 	mRadius = 10;
 }
@@ -55,4 +56,8 @@ bool GameObject::detectHit(GameObject *go)
 	}
 
 	return false;
+}
+
+int GameObject::getScore() {
+	return 0;
 }

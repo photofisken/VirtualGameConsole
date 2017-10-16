@@ -1,5 +1,6 @@
 #include "Fishdroids.h"
 #include "Bullet.h"
+#include "Explosion.h"
 using namespace std;
 
 static const int DAMAGE = 10;
@@ -36,6 +37,7 @@ Fishdroids::Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position
 	mType = FISHDROID;
 	mRadius = RADIUS;
 	mHealth = 1;
+	isEnemy = true;
 }
 
 
@@ -99,6 +101,7 @@ void Fishdroids::damage(int damage) {
 	mHealth -= damage;
 
 	if (mHealth <= 0) {
+		mGameObjects->push_back(new Explosion(mGameObjects, mPosition));
 		isAlive = false;
 	}
 }
@@ -131,4 +134,8 @@ void Fishdroids::finalize() {
 
 VGCVector Fishdroids::getPosition() {
 	return mPosition;
+}
+
+int Fishdroids::getScore() {
+	return 10;
 }

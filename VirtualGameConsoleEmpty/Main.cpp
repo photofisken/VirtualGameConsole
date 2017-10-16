@@ -12,6 +12,8 @@ using namespace std;
 static VGCFont mFont;
 static Sputnik *sputnik;
 
+static int SCORE = 0;
+
 void renderLife() {
 	ostringstream output;
 	output << "Life: " << sputnik->getHealth();
@@ -21,6 +23,7 @@ void renderLife() {
 
 	const VGCColor fontColor = VGCColor(255, 76, 186, 160);
 	VGCDisplay::renderString(mFont, text, fontColor, position, adjustment);
+	VGCDisplay::renderString(mFont, "Score: " + to_string(SCORE), fontColor, VGCVector(0, 24), adjustment);
 }
 
 int VGCMain(const VGCStringVector &arguments) {
@@ -65,6 +68,8 @@ int VGCMain(const VGCStringVector &arguments) {
 		for (unsigned int i = 0; i < GOVector.size(); i++)
 		{
 			if (GOVector[i]->isAlive == false) {   //if it's dead, delete the place in the vector
+				if (GOVector[i]->isEnemy)
+					SCORE += GOVector[i]->getScore();
 				delete GOVector[i];               //delete object
 				GOVector.erase(GOVector.begin() + i);   //delete spot in vector
 			}

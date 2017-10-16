@@ -86,6 +86,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="Fishdroids.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -98,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Explosion.h" />
     <ClInclude Include="Fishdroids.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="resource.h" />
@@ -109,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="bullet.png" />
+    <Image Include="explosion.png" />
     <Image Include="fishdroids.png" />
     <Image Include="sputnik.png" />
   </ItemGroup>
