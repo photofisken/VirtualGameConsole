@@ -7,6 +7,7 @@ GameObject::GameObject(GameObjectsVector* gameObjects):
 	mGameObjects(gameObjects)
 	, isAlive(true)
 {
+	mRadius = 10;
 }
 
 
@@ -29,7 +30,27 @@ int GameObject::getRadius()
 	return mRadius;
 }
 
-int GameObject::getDamage()
+int GameObject::getHealth()
 {
-	return mDamage;
+	return mHealth;
+}
+
+bool GameObject::detectHit(GameObject *go)
+{
+	if (go->getCategory() != mCategory)
+	{
+		VGCVector isHit = go->getPosition() - mPosition;
+
+		//formula for collision
+		const int a = isHit.getX();
+		const int b = isHit.getY();
+		const int lengthSquared = a * a + b * b;
+
+		const int or = go->getRadius();
+		const int r = getRadius();
+
+		return (lengthSquared < (r + or) * (r + or));
+	}
+
+	return false;
 }

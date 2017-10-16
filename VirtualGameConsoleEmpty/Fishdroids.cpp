@@ -1,8 +1,8 @@
 #include "Fishdroids.h"
 using namespace std;
 
-static const int DAMAGE = 5;
-static const int RADIUS = 10;
+static const int DAMAGE = 10;
+static const int RADIUS = 40;
 static const int SCORE = 100;
 static const double RELOAD = 0.7;
 static const int SPEED = 2;
@@ -30,6 +30,8 @@ Fishdroids::Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position
 	mDirection(direction)
 {
 	initialize();
+	mCategory = ENEMY;
+	mRadius = RADIUS;
 }
 
 
@@ -76,16 +78,17 @@ void Fishdroids::move() {
 //collide/hit
 /*
 int Fishdroids::hit() {
-if (0 < gameObject->getDamage()) {
-mIsAlive = false;
-//gameObjects.push_back(new Explosion(mPosition));
-return SCORE;
-}
-else {
-return 0;
-}
+	if (getHealth() <= 0) {
+		isAlive = false;
+		//gameObjects.push_back(new Explosion(mPosition));
+		return SCORE;
+	}
+	else {
+		return 0;
+	}
 }
 */
+
 
 void Fishdroids::render() {
 	VGCVector index(0, 0);
@@ -98,4 +101,8 @@ void Fishdroids::render() {
 void Fishdroids::finalize() {
 	VGCClock::closeTimer(mReload);
 	VGCDisplay::closeImage(mImage);
+}
+
+VGCVector Fishdroids::getPosition() {
+	return mPosition;
 }

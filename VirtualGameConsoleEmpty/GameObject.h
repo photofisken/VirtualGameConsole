@@ -14,7 +14,9 @@ public:
 	virtual Category getCategory();
 	virtual VGCVector getPosition();
 	virtual int getRadius();
-	virtual int getDamage();
+	virtual int getHealth();
+	//virtual void hit(int damage);
+	virtual bool detectHit(GameObject * go);
 	virtual void tick() = 0;
 	virtual void render() = 0;
 	virtual void finalize() = 0;
@@ -25,6 +27,6 @@ protected:         //Middleground for public and private: everything connected t
 	Category mCategory;
 	Layer mLayer;
 	int mRadius;
-	int mDamage;
+	int mHealth;
 };
 

@@ -3,6 +3,7 @@
 #include "Bullet.h"
 using namespace std;
 
+static const int HEALTH = 30;
 static const int DAMAGE = 1;
 static const int RADIUS = 4;
 static const int speed = 7;
@@ -19,6 +20,8 @@ Sputnik::Sputnik(GameObjectsVector* gameObjects)
 	, mPosition(VGCDisplay::getWidth() / 2, VGCDisplay::getHeight() - 50),
 	mReload(VGCClock::openTimer(RELOAD))
 {
+	mCategory = FRIEND;
+	mRadius = 10;
 }
 
 
@@ -90,3 +93,17 @@ void Sputnik::shoot()
 		VGCClock::reset(mReload);
 	}
 }
+/*
+void Sputnik::detectHits() {
+	for (unsigned int i = 0; i < mGameObjects->size(); i++)
+	{
+		GameObject* obj = (*mGameObjects)[i];
+
+		if (detectHit(obj))
+		{
+			isAlive = false;
+			obj->isAlive = false;
+		}
+	}
+}
+*/

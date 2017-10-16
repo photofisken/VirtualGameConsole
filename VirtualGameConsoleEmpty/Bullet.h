@@ -13,6 +13,7 @@ public:
 	void tick() override;
 	void finalize() override;
 	void move();
+	void detectHits();
 private:
 	VGCImage mImage;
 	VGCVector mDirection;

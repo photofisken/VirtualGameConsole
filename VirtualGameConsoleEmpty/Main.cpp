@@ -24,8 +24,8 @@ int VGCMain(const VGCStringVector &arguments) {
 	}
 
 	VGCTimer timer = VGCClock::openTimer(1.0 / FRAMES_PER_SECOND);
-	// Update (gameloop) (every frame)
-	while (VGCVirtualGameConsole::beginLoop()) {
+
+	while (VGCVirtualGameConsole::beginLoop()) {       	// Update (gameloop) (every frame)
 
 		VGCClock::reset(timer);       //something to "clean" the clock at startup
 		if (VGCDisplay::beginFrame()) {
@@ -51,7 +51,7 @@ int VGCMain(const VGCStringVector &arguments) {
 				GOVector[i]->tick();          //if it's alive, run the "update"
 			}
 		}
-		if (VGCRandomizer::getBool(0.01)) {      //1% chanse that it happens (spawns fishdroid)
+		if (VGCRandomizer::getBool(0.01)) {      //1% chance that it happens (spawns fishdroid)
 			VGCVector enemyPosition = VGCVector(VGCRandomizer::getInt(0, 800), -1);    //spawn in x and y axis
 			VGCVector enemyDirection = VGCVector(VGCRandomizer::getInt(-2, 2), 1);      //direction lul
 			GOVector.push_back(new Fishdroids(&GOVector, enemyPosition, enemyDirection)); //New droid?

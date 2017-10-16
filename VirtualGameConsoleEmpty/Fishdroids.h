@@ -7,9 +7,11 @@ public:
 	Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position, const VGCVector &direction);
 	 ~Fishdroids(); 
 	 virtual void tick();
+	 //virtual int hit();
 	 void render();
 	 void initialize();
 	 void finalize();
+	 VGCVector getPosition();
 private:
 	void move();
 	void shoot();
