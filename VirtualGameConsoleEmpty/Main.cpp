@@ -3,6 +3,7 @@
 #include <vector>
 #include "Sputnik.h"
 #include "Types.h"
+#include "Fishdroids.h"
 
 
 int VGCMain(const VGCStringVector &arguments) {
@@ -26,8 +27,7 @@ int VGCMain(const VGCStringVector &arguments) {
 	// Update (gameloop) (every frame)
 	while (VGCVirtualGameConsole::beginLoop()) {
 
-		VGCClock::reset(timer);
-		// Draw
+		VGCClock::reset(timer);       //something to "clean" the clock at startup
 		if (VGCDisplay::beginFrame()) {
 
 			const VGCColor backgroundColor = VGCColor(255, 0, 0, 0); //window colour
@@ -51,19 +51,26 @@ int VGCMain(const VGCStringVector &arguments) {
 				GOVector[i]->tick();          //if it's alive, run the "update"
 			}
 		}
+		if (VGCRandomizer::getBool(0.01)) {      //1% chanse that it happens (spawns fishdroid)
+			VGCVector enemyPosition = VGCVector(VGCRandomizer::getInt(0, 800), -1);    //spawn in x and y axis
+			VGCVector enemyDirection = VGCVector(VGCRandomizer::getInt(-2, 2), 1);      //direction lul
+			GOVector.push_back(new Fishdroids(&GOVector, enemyPosition, enemyDirection)); //New droid?
+		}  
 
 		VGCVirtualGameConsole::endLoop();
 	}
-
+	VGCClock::closeTimer(timer);
 	// Stop the program
 	for (unsigned int i = 0; i < GOVector.size(); i++)
 	{
 		GOVector[i]->finalize();
 	}
 
-	VGCVirtualGameConsole::finalize();
-
-	return 0;
+	 VGCVirtualGameConsole::finalize(); 
+	
+		return 0;
+	                                    
+	
 }
 
 //My old hello world below

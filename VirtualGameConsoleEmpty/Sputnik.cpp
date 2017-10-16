@@ -46,7 +46,7 @@ void Sputnik::tick() {
 }
 
 void Sputnik::finalize() {
-
+	VGCClock::closeTimer(mReload);
 	VGCDisplay::closeImage(image);
 }
 

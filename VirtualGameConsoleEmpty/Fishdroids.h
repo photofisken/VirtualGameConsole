@@ -12,7 +12,7 @@ public:
 	 void finalize();
 private:
 	void move();
-	void fire();
+	void shoot();
 	VGCTimer mReload;
 	VGCVector mPosition;
 	VGCVector mDirection;

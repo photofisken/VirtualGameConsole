@@ -3,8 +3,8 @@
 
 
 
-GameObject::GameObject(GameObjectsVector* gameObjects)
-	: mGameObjects(gameObjects)
+GameObject::GameObject(GameObjectsVector* gameObjects):
+	mGameObjects(gameObjects)
 	, isAlive(true)
 {
 }

@@ -5,11 +5,11 @@ static const int DAMAGE = 5;
 static const int RADIUS = 10;
 static const int SCORE = 100;
 static const double RELOAD = 0.7;
-static const int SPEED = 5;
+static const int SPEED = 2;
 static const int HEIGHT = 40;
 static const int WIDTH = 40;
 static const std::string textureName = "fishdroids.png";
-static VGCImage image;
+
 
 static VGCVector getRandomPosition() {
 	const int MIN_X = VGCDisplay::getWidth() + WIDTH / 2;
@@ -29,15 +29,17 @@ Fishdroids::Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position
 	mPosition(position),
 	mDirection(direction)
 {
+	initialize();
 }
 
 
 Fishdroids::~Fishdroids()
 {
+	finalize();
 }
 
 void Fishdroids::initialize() {
-	image = VGCDisplay::openImage(textureName, 1, 1);
+	mImage = VGCDisplay::openImage(textureName, 1, 1);
 }
 void Fishdroids::tick() {
 	move();
@@ -71,12 +73,12 @@ void Fishdroids::move() {
 	else {
 		mPosition.setX(x);*/
 
-//collide
+//collide/hit
 /*
-int Fishdroids::collide(GameObject *gameObject, GameObjectVector &gameObjects) {
+int Fishdroids::hit() {
 if (0 < gameObject->getDamage()) {
 mIsAlive = false;
-//entities.push_back(new Explosion(mPosition));
+//gameObjects.push_back(new Explosion(mPosition));
 return SCORE;
 }
 else {
@@ -84,14 +86,16 @@ return 0;
 }
 }
 */
+
 void Fishdroids::render() {
 	VGCVector index(0, 0);
 	VGCAdjustment adjustment(0.5, 0.5);
-	VGCDisplay::renderImage(image, index, mPosition, adjustment);
+	VGCDisplay::renderImage(mImage, index, mPosition, adjustment);
 }
 
 
 
 void Fishdroids::finalize() {
-	VGCDisplay::closeImage(image);
+	VGCClock::closeTimer(mReload);
+	VGCDisplay::closeImage(mImage);
 }
