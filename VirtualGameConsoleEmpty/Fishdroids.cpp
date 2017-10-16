@@ -34,7 +34,7 @@ Fishdroids::Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position
 	initialize();
 	mCategory = ENEMY;
 	mRadius = RADIUS;
-	mHealth = 10;
+	mHealth = 3;
 }
 
 
@@ -83,7 +83,7 @@ void Fishdroids::move() {
 void Fishdroids::shoot() {
 	if (VGCClock::isExpired(mReload)) {
 		VGCVector directionEnemyBullet(0, 1);
-		Bullet* bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionEnemyBullet, false);
+		Bullet* bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionEnemyBullet, false, DAMAGE);
 		mGameObjects->push_back(bullet);
 		VGCClock::reset(mReload);
 	}

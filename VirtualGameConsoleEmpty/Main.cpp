@@ -4,7 +4,12 @@
 #include "Sputnik.h"
 #include "Types.h"
 #include "Fishdroids.h"
+#include <sstream>
 
+
+using namespace std;
+
+static Sputnik *sputnik;
 
 int VGCMain(const VGCStringVector &arguments) {
 	// Below is the window and window size
@@ -17,7 +22,8 @@ int VGCMain(const VGCStringVector &arguments) {
 	GameObjectsVector GOVector;
 
 	//create an object out of the Sputnik (class)
-	GOVector.push_back(new Sputnik(&GOVector));
+	sputnik = new Sputnik(&GOVector);
+	GOVector.push_back(sputnik);
 	for (unsigned int i = 0; i < GOVector.size(); i++)
 	{
 		GOVector[i]->initialize();
@@ -72,6 +78,16 @@ int VGCMain(const VGCStringVector &arguments) {
 		return 0;
 	                                    
 	
+}
+
+void renderLife() {
+	ostringstream output;
+	output << "Life: " << sput->getLife();
+	const string text = output.str();
+	const VGCVector position(0, 0);
+	const VGCAdjustment adjustment(0.0, 0.0);
+
+	VGCDisplay::renderString(mFont, text, fontColor, position, adjustment);
 }
 
 //My old hello world below

@@ -5,7 +5,7 @@
 class Bullet : public GameObject
 {
 public:
-	Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction, bool friendly);
+	Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction, bool friendly, int damage);
 	~Bullet();
 
 	void initialize();
@@ -19,4 +19,5 @@ public:
 private:
 	VGCImage mImage;
 	VGCVector mDirection;
+	int mDamage;
 };

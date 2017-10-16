@@ -4,11 +4,10 @@
 #include <string>
 
 static const int SPEED = 6;
-static const int DAMAGE = 5;
 static const std::string textureName = "bullet.png";
 
 
-Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction, bool friendly)
+Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction, bool friendly, int damage)
 	: GameObject(gameObjects)
 {
 	mPosition = VGCVector(playerX, playerY);
@@ -17,6 +16,7 @@ Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVect
 	mImage = VGCDisplay::openImage(textureName, 1, 1);
 	mRadius = 2;
 	mHealth = 5;
+	mDamage = damage;
 }
 
 Bullet::~Bullet()
@@ -50,8 +50,9 @@ void Bullet::detectHits()
 
 		if (detectHit(obj))
 		{
+			obj->damage(mDamage);
+
 			isAlive = false;
-			obj->isAlive = false;
 		}
 	}
 }

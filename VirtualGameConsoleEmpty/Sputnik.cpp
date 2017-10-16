@@ -5,7 +5,7 @@ using namespace std;
 
 static const int HEALTH = 30;
 static const int DAMAGE = 1;
-static const int RADIUS = 20;
+static const int RADIUS = 32;
 static const int speed = 7;
 static const int height = 40;
 static const int width = 40;
@@ -21,12 +21,14 @@ Sputnik::Sputnik(GameObjectsVector* gameObjects)
 	mReload(VGCClock::openTimer(RELOAD))
 {
 	mCategory = FRIEND;
-	mRadius = 10;
+	mRadius = RADIUS;
+	mHealth = HEALTH;
 }
 
 
 Sputnik::~Sputnik()
 {
+	finalize();
 }
 
 
@@ -81,11 +83,11 @@ void Sputnik::shoot()
 		VGCVector directionUp(0, -1);
 		VGCVector directionRight(1, -1);
 		VGCVector directionLeft(-1, -1);
-		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionUp, true);
+		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionUp, true, DAMAGE);
 		mGameObjects->push_back(bullet);
-		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionRight, true);
+		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionRight, true, DAMAGE);
 		mGameObjects->push_back(bullet);
-		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionLeft, true);
+		bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionLeft, true, DAMAGE);
 		// Add bullet to GameObject vector
 		mGameObjects->push_back(bullet);
 		VGCClock::reset(mReload);
@@ -108,6 +110,10 @@ void Sputnik::detectHits() {
 
 void Sputnik::damage(int damage) {
 	mHealth -= damage;
+
+	if (mHealth <= 0) {
+		isAlive = false;
+	}
 }
 
 VGCVector Sputnik::getPosition() {
