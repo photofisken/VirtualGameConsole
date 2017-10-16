@@ -8,14 +8,15 @@ static const int DAMAGE = 5;
 static const std::string textureName = "bullet.png";
 
 
-Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction)
+Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction, bool friendly)
 	: GameObject(gameObjects)
 {
 	mPosition = VGCVector(playerX, playerY);
-	mCategory = FRIEND;
+	mCategory = friendly ? FRIEND : ENEMY;
 	mDirection = direction;
 	mImage = VGCDisplay::openImage(textureName, 1, 1);
-	mRadius = 10;
+	mRadius = 2;
+	mHealth = 5;
 }
 
 Bullet::~Bullet()
@@ -68,6 +69,14 @@ void Bullet::move()
 	// Delete if offscreen
 	if (y < 0)
 	{
+		isAlive = false;
+	}
+}
+
+void Bullet::damage(int damage) {
+	mHealth -= damage;
+
+	if (mHealth <= 0) {
 		isAlive = false;
 	}
 }

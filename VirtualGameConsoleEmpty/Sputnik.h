@@ -12,8 +12,10 @@ public:
 	 void render() override;   
 	 void finalize() override;
 	 //void detectHits();
+	 void damage(int damage);
 	 void move();
 	 void shoot();
+	 VGCVector getPosition();
 private: 
 	VGCVector mPosition;
 	VGCTimer mReload;

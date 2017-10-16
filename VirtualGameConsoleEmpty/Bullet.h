@@ -5,15 +5,17 @@
 class Bullet : public GameObject
 {
 public:
-	Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction);
+	Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVector direction, bool friendly);
 	~Bullet();
 
-	void initialize() override;
-	void render() override;
-	void tick() override;
-	void finalize() override;
+	void initialize();
+	void render();
+	void tick();
+	void finalize();
 	void move();
 	void detectHits();
+	void damage(int damage);
+	bool friendly;
 private:
 	VGCImage mImage;
 	VGCVector mDirection;

@@ -17,6 +17,7 @@ public:
 	virtual int getHealth();
 	//virtual void hit(int damage);
 	virtual bool detectHit(GameObject * go);
+	virtual void damage(int damage) = 0;
 	virtual void tick() = 0;
 	virtual void render() = 0;
 	virtual void finalize() = 0;

@@ -12,6 +12,7 @@ public:
 	 void initialize();
 	 void finalize();
 	 VGCVector getPosition();
+	 void damage(int damage);
 private:
 	void move();
 	void shoot();

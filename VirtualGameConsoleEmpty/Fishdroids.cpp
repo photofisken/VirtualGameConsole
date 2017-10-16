@@ -1,14 +1,16 @@
 #include "Fishdroids.h"
+#include "Bullet.h"
 using namespace std;
 
 static const int DAMAGE = 10;
-static const int RADIUS = 40;
+static const int RADIUS = 20;
 static const int SCORE = 100;
-static const double RELOAD = 0.7;
+static const double RELOAD = 1.8;
 static const int SPEED = 2;
 static const int HEIGHT = 40;
 static const int WIDTH = 40;
 static const std::string textureName = "fishdroids.png";
+// Bullet* bullet;
 
 
 static VGCVector getRandomPosition() {
@@ -32,6 +34,7 @@ Fishdroids::Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position
 	initialize();
 	mCategory = ENEMY;
 	mRadius = RADIUS;
+	mHealth = 10;
 }
 
 
@@ -45,6 +48,7 @@ void Fishdroids::initialize() {
 }
 void Fishdroids::tick() {
 	move();
+	shoot();
 }
 
 void Fishdroids::move() {
@@ -74,6 +78,24 @@ void Fishdroids::move() {
 	}
 	else {
 		mPosition.setX(x);*/
+
+
+void Fishdroids::shoot() {
+	if (VGCClock::isExpired(mReload)) {
+		VGCVector directionEnemyBullet(0, 1);
+		Bullet* bullet = new Bullet(mGameObjects, mPosition.getX(), mPosition.getY(), directionEnemyBullet, false);
+		mGameObjects->push_back(bullet);
+		VGCClock::reset(mReload);
+	}
+}
+
+void Fishdroids::damage(int damage) {
+	mHealth -= damage;
+
+	if (mHealth <= 0) {
+		isAlive = false;
+	}
+}
 
 //collide/hit
 /*

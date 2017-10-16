@@ -51,6 +51,7 @@ int VGCMain(const VGCStringVector &arguments) {
 				GOVector[i]->tick();          //if it's alive, run the "update"
 			}
 		}
+		// TODO: if ship has less health than 0: gameover
 		if (VGCRandomizer::getBool(0.01)) {      //1% chance that it happens (spawns fishdroid)
 			VGCVector enemyPosition = VGCVector(VGCRandomizer::getInt(0, 800), -1);    //spawn in x and y axis
 			VGCVector enemyDirection = VGCVector(VGCRandomizer::getInt(-2, 2), 1);      //direction lul
