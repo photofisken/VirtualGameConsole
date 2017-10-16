@@ -7,6 +7,7 @@ class GameObject
 public:
 	enum Category {FRIEND, ENEMY};
 	enum Layer {BACKGROUND, FOREGROUND}; //I guess I don't have this atm
+	enum Type {SPUTNIK, FISHDROID, BULLET};
 	typedef std::vector<GameObject*> GameObjectVector; 
 	GameObject(GameObjectsVector* gameObjects);
 	virtual ~GameObject();
@@ -15,6 +16,7 @@ public:
 	virtual VGCVector getPosition();
 	virtual int getRadius();
 	virtual int getHealth();
+	Type getType();
 	//virtual void hit(int damage);
 	virtual bool detectHit(GameObject * go);
 	virtual void damage(int damage) = 0;
@@ -27,6 +29,7 @@ protected:         //Middleground for public and private: everything connected t
 	VGCVector mPosition;
 	Category mCategory;
 	Layer mLayer;
+	Type mType;
 	int mRadius;
 	int mHealth;
 };

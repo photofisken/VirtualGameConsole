@@ -33,11 +33,15 @@ int GameObject::getHealth()
 	return mHealth;
 }
 
+GameObject::Type GameObject::getType() {
+	return mType;
+}
+
 bool GameObject::detectHit(GameObject *go)
 {
 	if (go->getCategory() != mCategory)
 	{
-		VGCVector isHit = go->getPosition() - mPosition;
+		VGCVector isHit = go->getPosition() - this->getPosition();
 
 		//formula for collision
 		const int a = isHit.getX();

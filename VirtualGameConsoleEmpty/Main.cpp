@@ -9,15 +9,29 @@
 
 using namespace std;
 
+static VGCFont mFont;
 static Sputnik *sputnik;
+
+void renderLife() {
+	ostringstream output;
+	output << "Life: " << sputnik->getHealth();
+	const string text = output.str();
+	const VGCVector position(0, 0);
+	const VGCAdjustment adjustment(0.0, 0.0);
+
+	const VGCColor fontColor = VGCColor(255, 76, 186, 160);
+	VGCDisplay::renderString(mFont, text, fontColor, position, adjustment);
+}
 
 int VGCMain(const VGCStringVector &arguments) {
 	// Below is the window and window size
 	const std::string applicationName = "Sputnik: the game";
-	const int DISPLAY_WIDTH = 800;
+	const int DISPLAY_WIDTH = 807;
 	const int DISPLAY_HEIGHT = 557;
 	static const double FRAMES_PER_SECOND = 120;
 	VGCVirtualGameConsole::initialize(applicationName, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+
+	mFont = VGCDisplay::openFont("Billo Normal", 20);
 
 	GameObjectsVector GOVector;
 
@@ -43,6 +57,7 @@ int VGCMain(const VGCStringVector &arguments) {
 			{
 				GOVector[i]->render();
 			}
+			renderLife();
 
 			VGCDisplay::endFrame();
 		}
@@ -65,8 +80,13 @@ int VGCMain(const VGCStringVector &arguments) {
 		}  
 
 		VGCVirtualGameConsole::endLoop();
+
+		if (sputnik->isAlive == false) {
+			break;
+		}
 	}
 	VGCClock::closeTimer(timer);
+	VGCDisplay::closeFont(mFont);
 	// Stop the program
 	for (unsigned int i = 0; i < GOVector.size(); i++)
 	{
@@ -80,15 +100,7 @@ int VGCMain(const VGCStringVector &arguments) {
 	
 }
 
-void renderLife() {
-	ostringstream output;
-	output << "Life: " << sput->getLife();
-	const string text = output.str();
-	const VGCVector position(0, 0);
-	const VGCAdjustment adjustment(0.0, 0.0);
 
-	VGCDisplay::renderString(mFont, text, fontColor, position, adjustment);
-}
 
 //My old hello world below
 /*
@@ -103,6 +115,7 @@ int VGCMain(const VGCStringVector &arguments){
 	const int FONT_SIZE = 48;
 	//here's the font "open"
 	VGCFont font = VGCDisplay::openFont("Times New Roman", FONT_SIZE);
+
 	//the gameloop!
 	while (VGCVirtualGameConsole::beginLoop()) {
 		// inform VGC about the beginning and end of the rendering step of the game loop. 

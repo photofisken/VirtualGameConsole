@@ -5,7 +5,7 @@ using namespace std;
 
 static const int HEALTH = 30;
 static const int DAMAGE = 1;
-static const int RADIUS = 32;
+static const int RADIUS = 40;
 static const int speed = 7;
 static const int height = 40;
 static const int width = 40;
@@ -21,6 +21,7 @@ Sputnik::Sputnik(GameObjectsVector* gameObjects)
 	mReload(VGCClock::openTimer(RELOAD))
 {
 	mCategory = FRIEND;
+	mType = SPUTNIK;
 	mRadius = RADIUS;
 	mHealth = HEALTH;
 }
@@ -46,6 +47,7 @@ void Sputnik::render() {
 void Sputnik::tick() {
 	move();
 	shoot();
+	detectHits();
 }
 
 void Sputnik::finalize() {
@@ -93,20 +95,25 @@ void Sputnik::shoot()
 		VGCClock::reset(mReload);
 	}
 }
-/*
+
 void Sputnik::detectHits() {
 	for (unsigned int i = 0; i < mGameObjects->size(); i++)
 	{
 		GameObject* obj = (*mGameObjects)[i];
 
-		if (detectHit(obj))
+		if (obj->getType() == FISHDROID)
 		{
-			isAlive = false;
-			obj->isAlive = false;
+			volatile VGCVector pos = obj->getPosition();
+
+			if (detectHit(obj))
+			{
+				damage(5);
+				obj->isAlive = false;
+			}
 		}
 	}
 }
-*/
+
 
 void Sputnik::damage(int damage) {
 	mHealth -= damage;

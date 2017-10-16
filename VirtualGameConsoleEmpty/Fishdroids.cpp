@@ -33,8 +33,9 @@ Fishdroids::Fishdroids(GameObjectsVector* gameObjects, const VGCVector &position
 {
 	initialize();
 	mCategory = ENEMY;
+	mType = FISHDROID;
 	mRadius = RADIUS;
-	mHealth = 3;
+	mHealth = 1;
 }
 
 
@@ -67,6 +68,11 @@ void Fishdroids::move() {
 	}
 	mPosition.setX(x);
 	mPosition.setY(y);
+
+	if (y > VGCDisplay::getHeight())
+	{
+		isAlive = false;
+	}
 
 	}
 	/*
@@ -117,8 +123,6 @@ void Fishdroids::render() {
 	VGCAdjustment adjustment(0.5, 0.5);
 	VGCDisplay::renderImage(mImage, index, mPosition, adjustment);
 }
-
-
 
 void Fishdroids::finalize() {
 	VGCClock::closeTimer(mReload);

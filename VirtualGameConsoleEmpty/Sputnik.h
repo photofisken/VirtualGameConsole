@@ -11,7 +11,7 @@ public:
 	 void tick() override;     
 	 void render() override;   
 	 void finalize() override;
-	 //void detectHits();
+	 void detectHits();
 	 void damage(int damage);
 	 void move();
 	 void shoot();

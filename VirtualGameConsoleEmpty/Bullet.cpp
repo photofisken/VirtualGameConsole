@@ -12,6 +12,7 @@ Bullet::Bullet(GameObjectsVector* gameObjects, int playerX, int playerY, VGCVect
 {
 	mPosition = VGCVector(playerX, playerY);
 	mCategory = friendly ? FRIEND : ENEMY;
+	mType = BULLET;
 	mDirection = direction;
 	mImage = VGCDisplay::openImage(textureName, 1, 1);
 	mRadius = 2;
@@ -64,8 +65,6 @@ void Bullet::move()
 	int y = mPosition.getY();
 	mPosition.setY(y);
 	mPosition.setX(x);
-
-	
 
 	// Delete if offscreen
 	if (y < 0)
